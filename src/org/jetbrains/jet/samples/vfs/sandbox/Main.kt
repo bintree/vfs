@@ -1,6 +1,6 @@
-package org.jetbrains.jet.samples.vfs.sandbox;
+package org.jetbrains.jet.samples.vfs.sandbox
 
-import org.jetbrains.jet.samples.vfs.*;
+import org.jetbrains.jet.samples.vfs.*
 import java.io.InputStreamReader
 import java.util.Scanner
 

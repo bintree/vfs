@@ -1,4 +1,4 @@
-package org.jetbrains.jet.samples.vfs;
+package org.jetbrains.jet.samples.vfs
 
 /**
  * Listener for receiving virtual file event

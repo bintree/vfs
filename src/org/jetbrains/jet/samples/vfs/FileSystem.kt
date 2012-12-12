@@ -1,9 +1,9 @@
-package org.jetbrains.jet.samples.vfs;
+package org.jetbrains.jet.samples.vfs
 
 import kotlin.concurrent.*
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import org.jetbrains.jet.samples.vfs.utils.*;
+import java.util.concurrent.locks.ReadWriteLock
+import java.util.concurrent.locks.ReentrantReadWriteLock
+import org.jetbrains.jet.samples.vfs.utils.*
 import java.util.concurrent.locks.Lock
 import java.io.File
 import java.util.ArrayList

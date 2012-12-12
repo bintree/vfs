@@ -1,4 +1,4 @@
-package org.jetbrains.jet.samples.vfs.utils;
+package org.jetbrains.jet.samples.vfs.utils
 
 import java.util.concurrent.locks.Lock
 import kotlin.util.*
@@ -11,7 +11,7 @@ private fun locked<T>(lock : Lock, body : () -> T) : T {
     try {
         return body()
     } finally {
-        lock.unlock();
+        lock.unlock()
     }
 }
 

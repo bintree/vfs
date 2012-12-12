@@ -1,6 +1,6 @@
-package org.jetbrains.jet.samples.vfs;
+package org.jetbrains.jet.samples.vfs
 
-import org.jetbrains.jet.samples.vfs.utils.*;
+import org.jetbrains.jet.samples.vfs.utils.*
 import java.io.File
 import java.io.InputStream
 import java.io.FileInputStream
@@ -99,7 +99,7 @@ public class PhysicalVirtualFile(path : String) : VirtualFile(path) {
     override public fun openInputStream(): InputStream {
         FileSystem.assertCanRead()
         if (isDirectory) {
-            throw IllegalArgumentException("Can't open directory for reading");
+            throw IllegalArgumentException("Can't open directory for reading")
         }
         return CheckedInputStream(FileInputStream(ioFile))
     }
