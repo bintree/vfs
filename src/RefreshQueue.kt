@@ -1,7 +1,6 @@
 package org.jetbrains.jet.samples.vfs;
 
 import java.util.concurrent.ConcurrentLinkedQueue
-import java.util.List
 import java.util.concurrent.locks.ReentrantLock
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.ArrayList

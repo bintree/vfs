@@ -5,7 +5,6 @@ import java.io.File
 import java.io.InputStream
 import java.io.FileInputStream
 import java.util.ArrayList
-import java.util.List
 
 import kotlin.util.*
 
@@ -93,8 +92,8 @@ public class PhysicalVirtualFile(path : String) : VirtualFile(path) {
     override public val children: List<VirtualFile>
     get() {
         FileSystem.assertCanRead()
-        return (ioFile.listFiles() ?: array<File?>()).
-                map{ FileSystem.getFileByIoFile(it!!) }?.toList()
+        return (ioFile.listFiles() ?: array<File>()).
+                map{ FileSystem.getFileByIoFile(it) }.toList()
     }
 
     override public fun openInputStream(): InputStream {
@@ -106,7 +105,7 @@ public class PhysicalVirtualFile(path : String) : VirtualFile(path) {
     }
 }
 
-private val OS_SEPARATOR = java.io.File.separator!!
+private val OS_SEPARATOR = java.io.File.separator
 private val VFS_SEPARATOR = "/"
 
 private fun String.toSystemDependentPath() : String {
@@ -126,7 +125,7 @@ private class CheckedInputStream(private val wrapped : InputStream) : InputStrea
         return wrapped.read()
     }
 
-    override public fun read(b: ByteArray?, off: Int, len: Int) : Int {
+    override public fun read(b: ByteArray, off: Int, len: Int) : Int {
         FileSystem.assertCanRead()
         return wrapped.read(b, off, len)
     }
@@ -151,7 +150,7 @@ private class CheckedInputStream(private val wrapped : InputStream) : InputStrea
         return wrapped.mark(readlimit)
     }
 
-    override public fun read(b: ByteArray?): Int {
+    override public fun read(b: ByteArray): Int {
         FileSystem.assertCanRead()
         return wrapped.read(b)
     }

@@ -6,11 +6,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.jetbrains.jet.samples.vfs.utils.*;
 import java.util.concurrent.locks.Lock
 import java.io.File
-import java.util.List
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Arrays
-import java.util.Map
 
 import kotlin.util.*
 import java.util.TimerTask
@@ -21,7 +19,7 @@ import java.util.TimerTask
  */
 public object FileSystem {
     private val lock = ReentrantReadWriteLock()
-    internal val watchedDirectories = ArrayList<VirtualFile>
+    internal val watchedDirectories = ArrayList<VirtualFile>()
 
     /**
      * Mapping from virtual files to metainformation
@@ -36,7 +34,7 @@ public object FileSystem {
      */
     public fun getFileByIoFile(ioFile : File) : VirtualFile {
         FileSystem.assertCanRead()
-        return PhysicalVirtualFile(ioFile.getAbsolutePath()!!.toSystemIndependentPath())
+        return PhysicalVirtualFile(ioFile.getAbsolutePath().toSystemIndependentPath())
     }
 
     /**
@@ -130,7 +128,7 @@ private class VirtualFileInfo(file : VirtualFile) {
     /* Last modification time */
     var lastModified : Long = 0
     /* List of known children */
-    val children : List<VirtualFile> = ArrayList<VirtualFile>;
+    val children : MutableList<VirtualFile> = ArrayList<VirtualFile>();
 
     {
         children.addAll(file.children)
