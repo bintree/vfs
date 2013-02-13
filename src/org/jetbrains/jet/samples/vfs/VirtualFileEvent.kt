@@ -4,7 +4,7 @@ package org.jetbrains.jet.samples.vfs
  * Listener for receiving virtual file event
  */
 public trait VirtualFileListener : java.util.EventListener {
-    fun eventHappened(val event : VirtualFileEvent)
+    fun eventHappened(event : VirtualFileEvent)
 }
 
 // FIXME using this wrapper because of codegen bug KT-1737, should be replaced with
