@@ -18,7 +18,9 @@ import java.util.TimerTask
  * acquired: use read() and write() higher-order functions.
  */
 public object FileSystem {
-    private val lock = ReentrantReadWriteLock()
+    //TODO add inlineApi annotation and make private
+    public val lock: ReentrantReadWriteLock = ReentrantReadWriteLock()
+
     internal val watchedDirectories = ArrayList<VirtualFile>()
 
     /**
