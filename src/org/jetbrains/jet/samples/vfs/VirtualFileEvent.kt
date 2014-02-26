@@ -19,14 +19,14 @@ private class SimpleVirtualFileListener(val listenerFunction : (VirtualFileEvent
  * Base type of virtual file events
  * @property file affected by event
  */
-public abstract class VirtualFileEvent(val file : VirtualFile) : Object() {
+public abstract class VirtualFileEvent(val file : VirtualFile) {
 }
 
 /**
  * Event of creating file
  */
 public class VirtualFileCreateEvent(file : VirtualFile) : VirtualFileEvent(file) {
-    override public fun toString(): String? {
+    override fun toString(): String {
         return "created ${file}"
     }
 }
@@ -35,7 +35,7 @@ public class VirtualFileCreateEvent(file : VirtualFile) : VirtualFileEvent(file)
  * Event of deleting file
  */
 public class VirtualFileDeletedEvent(file : VirtualFile) : VirtualFileEvent(file) {
-    override public fun toString(): String? {
+    override fun toString(): String {
         return "deleted ${file}"
     }
 }
@@ -44,7 +44,7 @@ public class VirtualFileDeletedEvent(file : VirtualFile) : VirtualFileEvent(file
  * Event of changing file contents
  */
 public class VirtualFileChangedEvent(file : VirtualFile) : VirtualFileEvent(file) {
-    override public fun toString(): String? {
+    override fun toString(): String {
         return "changed ${file}"
     }
 }

@@ -11,7 +11,7 @@ import kotlin.util.*
 /**
  * Abstract virtual file.
  */
-public abstract class VirtualFile(public val path : String) : Hashable {
+public abstract class VirtualFile(public val path : String) {
     protected abstract val kind : String
 
     /**
@@ -42,16 +42,15 @@ public abstract class VirtualFile(public val path : String) : Hashable {
      */
     public abstract fun openInputStream() : InputStream
 
-    public override fun equals(other : Any?) : Boolean {
+    override fun equals(other : Any?) : Boolean {
         return other is VirtualFile && kind == other.kind && path == other.path
     }
 
-    public override fun hashCode() : Int {
-        // FIXME rewrite without casting when it will be possible (KT-1741)
-        return (kind as java.lang.String).hashCode() * 31 + (path as java.lang.String).hashCode()
+    override fun hashCode() : Int {
+        return kind.hashCode() * 31 + path.hashCode()
     }
 
-    fun toString(): String {
+    override fun toString(): String {
         return "${kind}[path=$path]"
     }
 }
