@@ -6,12 +6,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock
 import org.jetbrains.jet.samples.vfs.utils.*
 import java.util.concurrent.locks.Lock
 import java.io.File
-import java.util.ArrayList
-import java.util.HashMap
-import java.util.Arrays
-
+import java.util.*
 import kotlin.util.*
-import java.util.TimerTask
+import kotlin.InlineOption.ONLY_LOCAL_RETURN
 
 /**
  * File system singleton. To work with virtual file system, read/write locks should be
@@ -51,14 +48,14 @@ public object FileSystem {
     /**
      * Runs function with read lock.
      */
-    public inline fun read<T>(task : () -> T) : T {
+    public inline fun read<T>([inlineOptions(ONLY_LOCAL_RETURN)] task : () -> T) : T {
         return lock.read<T>(task)
     }
 
     /**
      * Runs function with write lock.
      */
-    public inline fun write<T>(task : () -> T) : T {
+    public inline fun write<T>([inlineOptions(ONLY_LOCAL_RETURN)] task : () -> T) : T {
         return lock.write(task)
     }
 
@@ -87,11 +84,11 @@ public object FileSystem {
         fileInfo.children.forEach{ scanAndAddRecursivelyNoEvents(it) }
     }
 
-    internal inline fun assertCanRead() {
+    internal fun assertCanRead() {
         check(lock.getReadHoldCount() != 0 || lock.isWriteLockedByCurrentThread())
     }
 
-    internal inline fun assertCanWrite() {
+    internal fun assertCanWrite() {
         check(lock.isWriteLockedByCurrentThread())
     }
 
