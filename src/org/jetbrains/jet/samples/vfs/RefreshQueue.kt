@@ -19,7 +19,7 @@ import org.jetbrains.jet.samples.vfs.utils.*
 internal object RefreshQueue {
     private val taskQueue = LinkedBlockingQueue<List<VirtualFile>>();
 
-    {
+    init {
         thread(daemon=true, name="refresher thread") {
             while (!currentThread.isInterrupted()) {
                 try {

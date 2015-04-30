@@ -129,7 +129,7 @@ private class VirtualFileInfo(file : VirtualFile) {
     /* List of known children */
     val children : MutableList<VirtualFile> = ArrayList<VirtualFile>();
 
-    {
+    init {
         children.addAll(file.children)
         lastModified = file.modificationTime
     }
