@@ -3,7 +3,7 @@ package org.jetbrains.jet.samples.vfs
 /**
  * Listener for receiving virtual file event
  */
-public trait VirtualFileListener : java.util.EventListener {
+public interface VirtualFileListener : java.util.EventListener {
     fun eventHappened(event : VirtualFileEvent)
 }
 

@@ -91,7 +91,7 @@ public class PhysicalVirtualFile(path : String) : VirtualFile(path) {
     override public val children: List<VirtualFile>
     get() {
         FileSystem.assertCanRead()
-        return (ioFile.listFiles() ?: array<File>()).
+        return (ioFile.listFiles() ?: arrayOf<File>()).
                 map{ FileSystem.getFileByIoFile(it) }.toList()
     }
 
@@ -108,11 +108,11 @@ private val OS_SEPARATOR = java.io.File.separator
 private val VFS_SEPARATOR = "/"
 
 private fun String.toSystemDependentPath() : String {
-    return this.replaceAll(VFS_SEPARATOR, OS_SEPARATOR)
+    return this.replace(VFS_SEPARATOR.toRegex(), OS_SEPARATOR)
 }
 
 private fun String.toSystemIndependentPath() : String {
-    return this.replaceAll(OS_SEPARATOR, VFS_SEPARATOR)
+    return this.replace(OS_SEPARATOR.toRegex(), VFS_SEPARATOR)
 }
 
 /**

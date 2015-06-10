@@ -9,7 +9,7 @@ import java.util.Scanner
  * adds virtual file system listener and waits for 1 minutes, printing out all received event.
  */
 fun main(args : Array<String>) {
-    if (args.size == 0) {
+    if (args.size() == 0) {
         println("Provide list of watched directories as command line arguments")
         return
     }

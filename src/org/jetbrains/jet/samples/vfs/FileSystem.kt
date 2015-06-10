@@ -48,7 +48,7 @@ public object FileSystem {
     /**
      * Runs function with read lock.
      */
-    public inline fun read<T>([inlineOptions(ONLY_LOCAL_RETURN)] task : () -> T) : T {
+    public inline fun read<T>(@inlineOptions(ONLY_LOCAL_RETURN) task : () -> T) : T {
         return lock.read<T>(task)
     }
 
